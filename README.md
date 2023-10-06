@@ -1,6 +1,6 @@
 # VoidWorks-ShipYard
 
-# Acmegegrade July Internship Ecommerce Project
+# Acmegrade July Internship Ecommerce Project
 
 ## Project Website
 - [VoidWorks ShipYard](https://vwsy.free.nf)
