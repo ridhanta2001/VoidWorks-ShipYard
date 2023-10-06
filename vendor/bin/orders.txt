@@ -1,0 +1,74 @@
+<?php
+    include "authguard.php";
+    include "menu.html";
+
+    include_once "../shared/connection.php";
+    $sql_qry=mysqli_query($conn,"select username from user where userid=$_SESSION[userid]");
+    $uname=mysqli_fetch_assoc($sql_qry);
+?>
+    <nav class="navbar navbar-light bg-warning">
+        <div class="container-fluid">
+            <form class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Search..." aria-label="Search" onkeyup="searchProducts()" id="searchInput">
+            </form>
+        </div>
+        <div class="d-flex align-items-center position-absolute top-0 end-0 p-3">
+            <span>
+                <img src='../shared/account.png' alt="" width="20" height="20" style="margin-right: 5px;">
+            </span>
+            <span class="text-dark">
+                <?php echo $uname['username']; ?>
+            </span>
+        </div>
+    </nav>
+ <div style="margin-left: 13vw;" id="productContainer">
+ <?php
+    $sql_result = mysqli_query($conn, "select * from orders where uploaded_by=$_SESSION[userid]");
+
+        while ($row = mysqli_fetch_assoc($sql_result)) {
+            
+            $html = file_get_contents("orders.html");
+            $html = str_replace('{orderid}', $row['orderid'], $html);
+            $html = str_replace('{userid}', $row['userid'], $html);
+            $html = str_replace('{PRODUCT_NAME}', $row['name'], $html);
+            $html = str_replace('{PRODUCT_PRICE}', $row['price'] . ' ISK', $html);
+            $html = str_replace('{PRODUCT_IMAGE}', $row['impath'], $html);
+            $html = str_replace('{ordertime}', $row['ordertime'], $html);
+            $html = str_replace('{ORDER_STATUS}', $row['orderstatus'], $html);
+            $html = str_replace('{c_name}', $row['cname'], $html);
+            echo $html;
+
+            
+        }
+
+
+
+?>
+</div>
+    <div class="card-footer text-center p-5 bg-dark">
+    <h1 class="fw-bolder fs-1 text-muted " style="font-family: sans-serif;">VoidWorks ShipYard</h1>
+    <h3 class="text-muted fw-light fs-6">New Eden's best Space Ship Broker  </h3>
+    </div>
+
+<script>
+        // JavaScript function for adding products to the cart
+        function addToCart(pid) {
+            // You can implement the logic to add the product to the cart here.
+            // You might need to use AJAX or a form submission to interact with the server.
+            alert("Added to Cart: Product ID " + pid);
+        }
+
+        // JavaScript function for searching products
+        function searchProducts() {
+            const searchInput = document.getElementById('searchInput');
+            const productContainer = document.getElementById('productContainer');
+            const searchTerm = searchInput.value.toLowerCase();
+
+            // Filter the products based on the search term
+            const productCards = productContainer.getElementsByClassName('card');
+            for (const card of productCards) {
+                const productName = card.getElementsByClassName('name')[0].textContent.toLowerCase();
+                card.style.display = productName.includes(searchTerm) ? 'block' : 'none';
+            }
+        }
+    </script>

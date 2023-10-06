@@ -1,0 +1,11 @@
+<!-- Vendor Home -->
+
+
+<?php
+    
+    include "authguard.php";
+
+    include "menu.html";
+
+    include "view.html";
+?>
