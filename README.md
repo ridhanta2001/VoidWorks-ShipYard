@@ -3,7 +3,7 @@
 # Acmegegrade July Internship Ecommerce Project
 
 ## Project Website
-- [Visit the Online Site](https://vwsy.free.nf/client/orders.php)
+- [Site link](https://vwsy.free.nf/client/orders.php)
 
 
 ## Table of Contents
