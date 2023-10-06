@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+
+</head>
+<body>
+        
+            <div class="card mb-3 bg-light m-2 border" style="max-width: 100vw; height: 20vh;">
+                
+                <div class="row no-gutters">
+                    <div class="col-md-4" style="max-width: 11vw; margin: 1px;">
+                        <img class='card-img' src='{PRODUCT_IMAGE}?version=2' alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title name">{PRODUCT_NAME}</h3>
+                            <h5 class="card-title text-danger">{PRODUCT_PRICE}</h5><h6 class="card-title text-dark position-absolute top-0 end-0 m-4 fw-light">Order Status: <span class="text-muted fw-bold order-status" id="os{orderid}">{ORDER_STATUS}</span></h6><button class='delete btn-dark p-2 rounded-3 position-absolute end-0 m-4' onclick="altAdd({orderid})" id="btt{orderid}">Cancel Order</button>
+                            <p class="card-text"><small class="text-muted">Ordered On: {ordertime}<span style="margin-left: 10px;">Order id: {orderid}</span></small></p>
+                            <p class="card-text"><small class="text-muted">Client UID: {userid} <span style="margin-left: 10px;">Client Name: {c_name}</span></small></p>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- <div class="d-flex bg-warning justify-content-end align-items-center flex-row position-absolute p-3" style="height: 100%; width: 100%;">
+                   
+                </div> -->
+            </div>
+        
+    <script>
+        function altAdd(orderid)
+        {
+            res=confirm("Confirm Cancel Order?")
+            if(res)
+            {
+                window.location=`` + orderid;
+            }
+
+        }
+        
+
+        function checkOrderStatus() {
+        const orderCards = document.querySelectorAll('.card');
+
+        orderCards.forEach((orderCard) => {
+            const orderId = orderCard.getAttribute('data-order-id');
+            const orderStatusSpan = document.getElementById(`os${orderId}`);
+            const cancelButton = document.getElementById(`btt${orderId}`);
+    
+            if (orderStatusSpan && cancelButton) {
+                const orderStatus = orderStatusSpan.textContent.trim();
+    
+                if (orderStatus === 'DELIVERED') {
+                    // Change the class of the span
+                    orderStatusSpan.classList.remove('text-muted');
+                    orderStatusSpan.classList.add('text-success');
+    
+                    // Hide the button
+                    cancelButton.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    // Call the function to check the order status when the page loads
+    window.addEventListener('load', checkOrderStatus);
+    </script>
+        
+    
+    
+
+</body>
+</html>

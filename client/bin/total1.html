@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+    </style>
+</head>
+<body class="">
+    <div class='bg-secondary display-3'>
+        <div class='text-white text-center'>Check Out Price: 
+            <span class='text-warning'>{total}</span>
+            <button class='btn btn-info p-4 mb-2' id="bt1">Place Order</button>
+        </div>
+        <div style="display: none; ">
+            <form action="p_order.php" method="post" id="orderForm">
+                {pidInputs}
+                <button type="submit" class="" id="bt2">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        
+        var pidInputs = document.getElementById("orderForm").querySelectorAll("input[name^='pid']");
+        if (pidInputs.length === 0) {
+            document.getElementById("bt1").style.display = "none"; // Hide the button
+        }
+
+        document.getElementById("bt1").addEventListener("click", function() {
+            document.getElementById("bt2").click();
+        });
+    </script>
+</body>
+</html>
