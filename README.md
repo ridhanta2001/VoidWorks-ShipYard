@@ -20,18 +20,18 @@
 
 ## Admin Panel
 
-### Separate Login Portal
-Access the admin panel at: `domainname/Admin`
-
-### Features
-- Edit User Info
-- Delete Users
-- Purge Unused Product Images from the Server to Save Space
-
-### Links
-- phpMyAdmin Panel
-- CPanel
-- Hosting Provider Control Panel
+   ### Separate Login Portal
+   Access the admin panel at: `domainname/Admin`
+   
+   ### Features
+   - Edit User Info
+   - Delete Users
+   - Purge Unused Product Images from the Server to Save Space
+   
+   ### Links
+   - phpMyAdmin Panel
+   - CPanel
+   - Hosting Provider Control Panel
 
 ---
 
