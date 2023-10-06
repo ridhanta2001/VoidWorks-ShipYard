@@ -3,7 +3,7 @@
 # Acmegegrade July Internship Ecommerce Project
 
 ## Project Website
-- [VoidWorks ShipYard](https://vwsy.free.nf/client/orders.php)
+- [VoidWorks ShipYard](https://vwsy.free.nf){:target="_blank"}
 
 
 ## Table of Contents
